@@ -1,6 +1,6 @@
 package com.luandeoliveira.hr_oauth.feignclients;
 
-import com.luandeoliveira.hr_oauth.dto.UserDTO;
+import com.luandeoliveira.hr_oauth.entities.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "hr-user", path = "/users")
 public interface UserFeignClient {
     @GetMapping(value = "/search")
-    ResponseEntity<UserDTO> findByEmail(@RequestParam String email);
+    ResponseEntity<User> findByEmail(@RequestParam String email);
 }
