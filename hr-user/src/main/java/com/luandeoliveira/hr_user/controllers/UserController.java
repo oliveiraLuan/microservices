@@ -1,6 +1,7 @@
 package com.luandeoliveira.hr_user.controllers;
 
 import com.luandeoliveira.hr_user.dto.UserDTO;
+import com.luandeoliveira.hr_user.entities.User;
 import com.luandeoliveira.hr_user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/search")
-    public ResponseEntity<UserDTO> findByEmail(@RequestParam String email){
-        UserDTO dto = userService.findByEmail(email);
+    public ResponseEntity<User> findByEmail(@RequestParam String email){
+        User dto = userService.findByEmail(email);
         return ResponseEntity.ok(dto);
     }
 }

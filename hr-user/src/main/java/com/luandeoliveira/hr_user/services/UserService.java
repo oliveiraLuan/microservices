@@ -14,11 +14,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserDTO findByEmail(String email) {
+    public User findByEmail(String email) {
         if(!userRepository.existsByEmail(email))
             throw new UserNotFoundException("Usuário com e-mail informado não encontrado");
         User user = userRepository.findByEmail(email);
-        return new UserDTO(user);
+        return user;
     }
 
     public UserDTO findById(Long id) {
