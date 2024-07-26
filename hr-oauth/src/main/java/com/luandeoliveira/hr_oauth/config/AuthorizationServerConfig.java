@@ -16,11 +16,11 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    private static final String PASSWORD = "PASSWORD";
+    private static final String PASSWORD = "password";
 
-    private static final String READ = "READ";
+    private static final String READ = "read";
 
-    private static final String WRITE = "WRITE";
+    private static final String WRITE = "write";
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
