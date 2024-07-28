@@ -1,6 +1,7 @@
 package com.luandeoliveira.hr_oauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,6 +23,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     private static final String WRITE = "write";
 
+    @Value(value = "oauth.client.name")
+    private String clientId;
+
+    @Value(value = "oauth.client.secret")
+    private String clientSecret;
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -42,8 +49,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("myclientid")
-                .secret(bCryptPasswordEncoder.encode("myclientsecret"))
+                .withClient(clientId)
+                .secret(bCryptPasswordEncoder.encode(clientSecret))
                 .scopes(READ, WRITE)
                 .authorizedGrantTypes(PASSWORD)
                 .accessTokenValiditySeconds(86400);
