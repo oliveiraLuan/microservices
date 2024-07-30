@@ -23,10 +23,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     private static final String WRITE = "write";
 
-    @Value(value = "oauth.client.name")
+    @Value("oauth.client.name")
     private String clientId;
 
-    @Value(value = "oauth.client.secret")
+    @Value("oauth.client.secret")
     private String clientSecret;
 
     @Autowired
